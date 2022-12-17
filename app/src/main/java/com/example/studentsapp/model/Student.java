@@ -1,14 +1,21 @@
 package com.example.studentsapp.model;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
     private String name;
     private String id;
+    private String phone;
+    private String address;
     private String imageUrl;
     private boolean checkBox;
 
-    public Student(String name, String id, String imageUrl, Boolean checkBox) {
+    public Student(String name, String id, String phone,
+                   String address, String imageUrl, Boolean checkBox) {
         this.name = name;
         this.id = id;
+        this.phone = phone;
+        this.address = address;
         this.imageUrl = imageUrl;
         this.checkBox = checkBox;
     }
@@ -27,6 +34,22 @@ public class Student {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getPhone() {
+        return this.phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return this.address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getImageUrl() {

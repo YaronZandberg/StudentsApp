@@ -9,7 +9,8 @@ public class Model {
 
     private Model() {
         for (int i = 0; i < this.STUDENTS_AMOUNT; i++) {
-            this.addStudent(new Student("name " + i, "" + i, "", false));
+            this.addStudent(new Student("name " + i, "" + i, "03-" + i,
+                    "street " + i, "", false));
         }
     }
 
@@ -27,11 +28,11 @@ public class Model {
         data.add(student);
     }
 
-    public Student getStudentById(Integer studentId){
-        return data.get(studentId);
+    public void setStudent(Integer index, Student student){
+        data.set(index, student);
     }
 
-    public void removeStudent(Student student) {
-        data.remove(student);
+    public void removeStudent(Integer index) {
+        data.remove(data.get(index));
     }
 }
