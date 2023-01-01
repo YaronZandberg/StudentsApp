@@ -24,11 +24,15 @@ public class Model {
         return data;
     }
 
+    public Student getStudentById(Integer id) {
+        return data.get(id);
+    }
+
     public void addStudent(Student student) {
         data.add(student);
     }
 
-    public void setStudent(Integer index, Student student){
+    public void setStudent(Integer index, Student student) {
         data.set(index, student);
     }
 
