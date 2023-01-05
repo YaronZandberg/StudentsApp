@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.StudentFormFragment">
+    tools:context=".fragments.StudentEditFragment">
 
     <ImageView
-        android:id="@+id/studentform_fragment_img"
+        android:id="@+id/studentedit_fragment_img"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginStart="4dp"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/studentform_fragment_name_input_layout"
+        android:id="@+id/studentedit_fragment_name_input_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -26,17 +26,17 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentform_fragment_img">
+        app:layout_constraintTop_toBottomOf="@+id/studentedit_fragment_img">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/studentform_fragment_name_input_et"
+            android:id="@+id/studentedit_fragment_name_input_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/studentform_fragment_id_input_layout"
+        android:id="@+id/studentedit_fragment_id_input_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -45,17 +45,17 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentform_fragment_name_input_layout">
+        app:layout_constraintTop_toBottomOf="@+id/studentedit_fragment_name_input_layout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/studentform_fragment_id_input_et"
+            android:id="@+id/studentedit_fragment_id_input_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ID" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/studentform_fragment_phone_input_layout"
+        android:id="@+id/studentedit_fragment_phone_input_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -64,17 +64,17 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentform_fragment_id_input_layout">
+        app:layout_constraintTop_toBottomOf="@+id/studentedit_fragment_id_input_layout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/studentform_fragment_phone_input_et"
+            android:id="@+id/studentedit_fragment_phone_input_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/studentform_fragment_address_input_layout"
+        android:id="@+id/studentedit_fragment_address_input_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -83,27 +83,27 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentform_fragment_phone_input_layout">
+        app:layout_constraintTop_toBottomOf="@+id/studentedit_fragment_phone_input_layout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/studentform_fragment_address_input_et"
+            android:id="@+id/studentedit_fragment_address_input_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Address" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
-        android:id="@+id/studentform_fragment_checkbox"
+        android:id="@+id/studentedit_fragment_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginTop="4dp"
         android:text="CheckBox"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentform_fragment_address_input_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/studentedit_fragment_address_input_layout" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/studentform_fragment_birthday_input_layout"
+        android:id="@+id/studentedit_fragment_birthday_input_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -112,17 +112,17 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentform_fragment_checkbox">
+        app:layout_constraintTop_toBottomOf="@+id/studentedit_fragment_checkbox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/studentform_fragment_birthday_input_et"
+            android:id="@+id/studentedit_fragment_birthday_input_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Birthday" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/studentform_fragment_birthtime_input_layout"
+        android:id="@+id/studentedit_fragment_birthtime_input_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -131,41 +131,41 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentform_fragment_birthday_input_layout">
+        app:layout_constraintTop_toBottomOf="@+id/studentedit_fragment_birthday_input_layout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/studentform_fragment_birthtime_input_et"
+            android:id="@+id/studentedit_fragment_birthtime_input_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Birthtime" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/studentform_fragment_cancel_btn"
+        android:id="@+id/studentedit_fragment_cancel_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="2dp"
         android:text="cancel"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/studentform_fragment_delete_btn"
+        app:layout_constraintEnd_toStartOf="@+id/studentedit_fragment_delete_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/studentform_fragment_delete_btn"
+        android:id="@+id/studentedit_fragment_delete_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
         android:layout_marginEnd="2dp"
         android:text="delete"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/studentform_fragment_save_btn"
+        app:layout_constraintEnd_toStartOf="@+id/studentedit_fragment_save_btn"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/studentform_fragment_cancel_btn" />
+        app:layout_constraintStart_toEndOf="@+id/studentedit_fragment_cancel_btn" />
 
     <Button
-        android:id="@+id/studentform_fragment_save_btn"
+        android:id="@+id/studentedit_fragment_save_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
@@ -174,5 +174,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/studentform_fragment_delete_btn" />
+        app:layout_constraintStart_toEndOf="@+id/studentedit_fragment_delete_btn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

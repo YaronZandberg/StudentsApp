@@ -8,27 +8,39 @@
     <fragment
         android:id="@+id/studentListFragment"
         android:name="com.example.studentsapp.fragments.StudentListFragment"
-        android:label="fragment_student_list"
-        tools:layout="@layout/fragment_student_list" >
+        android:label="Students List"
+        tools:layout="@layout/fragment_student_list">
         <action
             android:id="@+id/action_studentListFragment_to_studentDetailsFragment"
             app:destination="@id/studentDetailsFragment" />
         <action
-            android:id="@+id/action_studentListFragment_to_studentFormFragment"
-            app:destination="@id/studentFormFragment" />
+            android:id="@+id/action_studentListFragment_to_studentNewFragment2"
+            app:destination="@id/studentNewFragment" />
     </fragment>
     <fragment
         android:id="@+id/studentDetailsFragment"
         android:name="com.example.studentsapp.fragments.StudentDetailsFragment"
-        android:label="fragment_student_details"
-        tools:layout="@layout/fragment_student_details" >
+        android:label="Student Details"
+        tools:layout="@layout/fragment_student_details">
+        <argument
+            android:name="student_position"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_studentDetailsFragment_to_studentEditFragment"
+            app:destination="@id/studentEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentEditFragment"
+        android:name="com.example.studentsapp.fragments.StudentEditFragment"
+        android:label="Edit Student"
+        tools:layout="@layout/fragment_student_edit">
         <argument
             android:name="student_position"
             app:argType="integer" />
     </fragment>
     <fragment
-        android:id="@+id/studentFormFragment"
-        android:name="com.example.studentsapp.fragments.StudentFormFragment"
+        android:id="@+id/studentNewFragment"
+        android:name="com.example.studentsapp.fragments.StudentNewFragment"
         android:label="New Student"
-        tools:layout="@layout/fragment_student_form" />
+        tools:layout="@layout/fragment_student_new" />
 </navigation>
