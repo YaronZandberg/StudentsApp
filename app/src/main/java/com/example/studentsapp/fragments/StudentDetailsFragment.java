@@ -26,7 +26,6 @@ public class StudentDetailsFragment extends Fragment {
     private FragmentStudentDetailsBinding viewBindings;
     private Integer studentPosition;
     private Student student;
-    // --- Test --- //
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
