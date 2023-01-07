@@ -16,115 +16,91 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/avatar" />
 
-    <TextView
-        android:id="@+id/studentdetails_fragment_name_tv_headline"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:gravity="center"
-        android:text="Name:"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentdetails_fragment_img" />
-
-    <TextView
-        android:id="@+id/studentdetails_fragment_phone_tv_headline"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:gravity="center"
-        android:text="Phone:"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentdetails_fragment_id_tv_headline" />
-
-    <TextView
-        android:id="@+id/studentdetails_fragment_id_tv_headline"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:gravity="center"
-        android:text="ID:"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentdetails_fragment_name_tv_headline" />
-
-    <TextView
-        android:id="@+id/studentdetails_fragment_address_tv_headline"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:gravity="center"
-        android:text="Address:"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentdetails_fragment_phone_tv_headline" />
-
-    <TextView
-        android:id="@+id/studentdetails_fragment_name_tv_value"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="10dp"
-        android:gravity="center_vertical"
-        android:text="TextView"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/studentdetails_fragment_name_tv_headline"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/studentdetails_fragment_name_input_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/studentdetails_fragment_name_tv_headline"
-        app:layout_constraintTop_toTopOf="@+id/studentdetails_fragment_name_tv_headline" />
-
-    <TextView
-        android:id="@+id/studentdetails_fragment_id_tv_value"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studentdetails_fragment_img"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="10dp"
-        android:gravity="center_vertical"
-        android:text="TextView"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/studentdetails_fragment_id_tv_headline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/studentdetails_fragment_id_tv_headline"
-        app:layout_constraintTop_toTopOf="@+id/studentdetails_fragment_id_tv_headline" />
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp">
 
-    <TextView
-        android:id="@+id/studentdetails_fragment_phone_tv_value"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="10dp"
-        android:gravity="center_vertical"
-        android:text="TextView"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/studentdetails_fragment_phone_tv_headline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/studentdetails_fragment_phone_tv_headline"
-        app:layout_constraintTop_toTopOf="@+id/studentdetails_fragment_phone_tv_headline" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/studentdetails_fragment_name_input_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/studentdetails_fragment_address_tv_value"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="10dp"
-        android:gravity="center_vertical"
-        android:text="TextView"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/studentdetails_fragment_address_tv_headline"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/studentdetails_fragment_id_input_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/studentdetails_fragment_address_tv_headline"
-        app:layout_constraintTop_toTopOf="@+id/studentdetails_fragment_address_tv_headline" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studentdetails_fragment_name_input_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/studentdetails_fragment_id_input_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ID" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/studentdetails_fragment_phone_input_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studentdetails_fragment_id_input_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/studentdetails_fragment_phone_input_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/studentdetails_fragment_address_input_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studentdetails_fragment_phone_input_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/studentdetails_fragment_address_input_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Address" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
         android:id="@+id/studentdetails_fragment_checkbox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studentdetails_fragment_address_input_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:text="checked"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentdetails_fragment_address_tv_headline" />
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="4dp"
+        android:text="CheckBox" />
 
     <Button
         android:id="@+id/studentdetails_fragment_edit_btn"

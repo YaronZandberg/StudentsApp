@@ -66,11 +66,22 @@ public class StudentDetailsFragment extends Fragment {
         return this.viewBindings.getRoot();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.student = Model.instance().getStudentById(this.studentPosition);
+        displayStudentDetails();
+    }
+
     private void displayStudentDetails() {
-        this.viewBindings.studentdetailsFragmentNameTvValue.setText(student.getName());
-        this.viewBindings.studentdetailsFragmentIdTvValue.setText(student.getId());
-        this.viewBindings.studentdetailsFragmentPhoneTvValue.setText(student.getPhone());
-        this.viewBindings.studentdetailsFragmentAddressTvValue.setText(student.getAddress());
+        this.viewBindings.studentdetailsFragmentNameInputEt.setText(student.getName());
+        this.viewBindings.studentdetailsFragmentNameInputEt.setFocusable(false);
+        this.viewBindings.studentdetailsFragmentIdInputEt.setText(student.getId());
+        this.viewBindings.studentdetailsFragmentIdInputEt.setFocusable(false);
+        this.viewBindings.studentdetailsFragmentPhoneInputEt.setText(student.getPhone());
+        this.viewBindings.studentdetailsFragmentPhoneInputEt.setFocusable(false);
+        this.viewBindings.studentdetailsFragmentAddressInputEt.setText(student.getAddress());
+        this.viewBindings.studentdetailsFragmentAddressInputEt.setFocusable(false);
         this.viewBindings.studentdetailsFragmentCheckbox.setChecked(student.isCheckBox());
         this.viewBindings.studentdetailsFragmentCheckbox.setClickable(false);
         displayDate();
