@@ -21,12 +21,14 @@ import android.view.ViewGroup;
 
 import com.example.studentsapp.R;
 import com.example.studentsapp.adapters.StudentRecyclerAdapter;
+import com.example.studentsapp.databinding.FragmentStudentListBinding;
 import com.example.studentsapp.model.Model;
 import com.example.studentsapp.model.Student;
 
 import java.util.List;
 
 public class StudentListFragment extends Fragment {
+    private FragmentStudentListBinding viewBindings;
     private List<Student> data;
 
     @Override
@@ -36,12 +38,17 @@ public class StudentListFragment extends Fragment {
         parentActivity.addMenuProvider(new MenuProvider() {
             @Override
             public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
-                menu.removeItem(R.id.studentEditFragment);
+                menu.removeItem(R.id.menu_editStudent);
             }
 
             @Override
             public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
-                return false;
+                /*StudentListFragmentDirections
+                        .ActionStudentListFragmentToStudentFormFragment action =
+                        StudentListFragmentDirections
+                        .actionStudentListFragmentToStudentFormFragment();
+                Navigation.findNavController(*//* Need a View *//*).navigate(action);*/
+                return true;
             }
         }, this, Lifecycle.State.RESUMED);
     }
@@ -50,9 +57,9 @@ public class StudentListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        View fragmentView = inflater.inflate(R.layout.fragment_student_list, container, false);
+        this.viewBindings = FragmentStudentListBinding.inflate(inflater, container, false);
         this.data = Model.instance().getAllStudents();
-        RecyclerView studentsList = fragmentView.findViewById(R.id.studentslistfragment_list);
+        RecyclerView studentsList = this.viewBindings.studentslistfragmentList;
         studentsList.setHasFixedSize(true);
         studentsList.setLayoutManager(new LinearLayoutManager(getContext()));
         StudentRecyclerAdapter adapter = new StudentRecyclerAdapter(getLayoutInflater(), data);
@@ -63,9 +70,17 @@ public class StudentListFragment extends Fragment {
                     .ActionStudentListFragmentToStudentDetailsFragment action =
                     StudentListFragmentDirections
                             .actionStudentListFragmentToStudentDetailsFragment(position);
-            Navigation.findNavController(fragmentView).navigate(action);
+            Navigation.findNavController(viewBindings.studentslistfragmentList).navigate(action);
         });
 
-        return fragmentView;
+        this.viewBindings.studentslistfragmentAddBtn.setOnClickListener(view -> {
+            StudentListFragmentDirections
+                    .ActionStudentListFragmentToStudentFormFragment action =
+                    StudentListFragmentDirections
+                            .actionStudentListFragmentToStudentFormFragment();
+            Navigation.findNavController(viewBindings.studentslistfragmentAddBtn).navigate(action);
+        });
+
+        return this.viewBindings.getRoot();
     }
 }

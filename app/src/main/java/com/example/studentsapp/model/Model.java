@@ -42,6 +42,12 @@ public class Model {
         if (minute < 10) {
             minute *= 10;
         }
+        if (index == 0) {
+            month = 5;
+            day = 17;
+            hour = 18;
+            minute = 34;
+        }
         return new Student(name, id, phone, address, imageUrl, checkbox, year, month, day, hour, minute);
     }
 

@@ -35,16 +35,16 @@ public class StudentDetailsFragment extends Fragment {
         parentActivity.addMenuProvider(new MenuProvider() {
             @Override
             public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
-                menu.removeItem(R.id.studentNewFragment);
+                menu.removeItem(R.id.menu_addStudent);
             }
 
             @Override
             public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
                 /*StudentDetailsFragmentDirections
-                        .ActionStudentDetailsFragmentToStudentEditFragment action =
+                        .ActionStudentDetailsFragmentToStudentFormFragment action =
                         StudentDetailsFragmentDirections
-                        .actionStudentDetailsFragmentToStudentEditFragment(studentPosition);
-                Navigation.findNavController(*//*viewBindings.getRoot()*//*).navigate(action);*/
+                        .actionStudentDetailsFragmentToStudentFormFragment(studentPosition);
+                Navigation.findNavController(*//* Need a View *//*).navigate(action);*/
                 return true;
             }
         }, this, Lifecycle.State.RESUMED);
@@ -58,9 +58,9 @@ public class StudentDetailsFragment extends Fragment {
         displayStudentDetails();
         this.viewBindings.studentdetailsFragmentEditBtn.setOnClickListener(view -> {
             StudentDetailsFragmentDirections
-                    .ActionStudentDetailsFragmentToStudentEditFragment action =
+                    .ActionStudentDetailsFragmentToStudentFormFragment action =
                     StudentDetailsFragmentDirections
-                            .actionStudentDetailsFragmentToStudentEditFragment(studentPosition);
+                            .actionStudentDetailsFragmentToStudentFormFragment(this.studentPosition);
             Navigation.findNavController(view).navigate(action);
         });
         return this.viewBindings.getRoot();

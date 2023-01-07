@@ -22,27 +22,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.studentsapp.R;
-import com.example.studentsapp.databinding.FragmentStudentEditBinding;
+import com.example.studentsapp.databinding.FragmentStudentFormBinding;
+import com.example.studentsapp.fragments.dialogs.AddStudentDialogFragment;
 import com.example.studentsapp.fragments.dialogs.DeleteStudentDialogFragment;
 import com.example.studentsapp.fragments.dialogs.UpdateStudentDialogFragment;
 import com.example.studentsapp.model.Model;
 import com.example.studentsapp.model.Student;
 
-public class StudentEditFragment extends Fragment {
-    private FragmentStudentEditBinding viewBindings;
+public class StudentFormFragment extends Fragment {
+    private FragmentStudentFormBinding viewBindings;
     private Integer studentPosition;
-    private Student student;
-    private Integer birthDateYear;
-    private Integer birthDateMonth;
-    private Integer birthDateDay;
-    private Integer birthDateHour;
-    private Integer birthDateMinute;
+    private Student student = null;
+    private Integer birthDateYear = 2023;
+    private Integer birthDateMonth = 1;
+    private Integer birthDateDay = 1;
+    private Integer birthDateHour = 12;
+    private Integer birthDateMinute = 30;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //this.studentPosition = StudentEditFragmentArgs.fromBundle(getArguments()).getStudentPosition();
-        this.studentPosition = 0;
+        this.studentPosition = StudentFormFragmentArgs.fromBundle(getArguments()).getStudentPosition();
         FragmentActivity parentActivity = getActivity();
         parentActivity.addMenuProvider(new MenuProvider() {
             @Override
@@ -60,12 +60,17 @@ public class StudentEditFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        this.viewBindings = FragmentStudentEditBinding.inflate(inflater, container, false);
-        this.student = Model.instance().getStudentById(this.studentPosition);
-        initializeParameters();
-        displayStudentDetails();
+        this.viewBindings = FragmentStudentFormBinding.inflate(inflater, container, false);
+        if (this.studentPosition > -1) {
+            this.viewBindings.studentformFragmentDeleteBtn.setVisibility(View.VISIBLE);
+            this.student = Model.instance().getStudentById(this.studentPosition);
+            initializeParameters();
+            displayStudentDetails();
+        }
+        displayDate();
+        displayTime();
 
-        this.viewBindings.studenteditFragmentBirthDateInputEt.setOnTouchListener((view, motionEvent) -> {
+        this.viewBindings.studentformFragmentBirthDateInputEt.setOnTouchListener((view, motionEvent) -> {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 Dialog dialog = new DatePickerDialog(getContext(), (datePicker, year, month, day) -> {
                     this.birthDateYear = year;
@@ -79,7 +84,7 @@ public class StudentEditFragment extends Fragment {
             return false;
         });
 
-        this.viewBindings.studenteditFragmentBirthTimeInputEt.setOnTouchListener((view, motionEvent) -> {
+        this.viewBindings.studentformFragmentBirthTimeInputEt.setOnTouchListener((view, motionEvent) -> {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 Dialog dialog = new TimePickerDialog(getContext(), (timePicker, hour, minute) -> {
                     this.birthDateHour = hour;
@@ -92,14 +97,18 @@ public class StudentEditFragment extends Fragment {
             return false;
         });
 
-        this.viewBindings.studenteditFragmentCancelBtn.setOnClickListener(view ->
+        this.viewBindings.studentformFragmentCancelBtn.setOnClickListener(view ->
                 Navigation.findNavController(view).popBackStack());
-        this.viewBindings.studenteditFragmentSaveBtn.setOnClickListener(view -> {
+        this.viewBindings.studentformFragmentSaveBtn.setOnClickListener(view -> {
             updateStudent();
-            new UpdateStudentDialogFragment().show(getActivity().getSupportFragmentManager(), "TAG");
+            if (this.studentPosition == -1) {
+                new AddStudentDialogFragment().show(getActivity().getSupportFragmentManager(), "TAG");
+            } else {
+                new UpdateStudentDialogFragment().show(getActivity().getSupportFragmentManager(), "TAG");
+            }
             Navigation.findNavController(view).popBackStack();
         });
-        this.viewBindings.studenteditFragmentDeleteBtn.setOnClickListener(view -> {
+        this.viewBindings.studentformFragmentDeleteBtn.setOnClickListener(view -> {
             deleteStudent();
             new DeleteStudentDialogFragment().show(getActivity().getSupportFragmentManager(), "TAG");
             Navigation.findNavController(view).popBackStack(R.id.studentListFragment, false);
@@ -116,23 +125,21 @@ public class StudentEditFragment extends Fragment {
     }
 
     private void displayStudentDetails() {
-        this.viewBindings.studenteditFragmentNameInputEt.setText(this.student.getName());
-        this.viewBindings.studenteditFragmentIdInputEt.setText(this.student.getId());
-        this.viewBindings.studenteditFragmentPhoneInputEt.setText(this.student.getPhone());
-        this.viewBindings.studenteditFragmentAddressInputEt.setText(this.student.getAddress());
-        this.viewBindings.studenteditFragmentCheckbox.setChecked(this.student.isCheckBox());
-        displayDate();
-        displayTime();
+        this.viewBindings.studentformFragmentNameInputEt.setText(this.student.getName());
+        this.viewBindings.studentformFragmentIdInputEt.setText(this.student.getId());
+        this.viewBindings.studentformFragmentPhoneInputEt.setText(this.student.getPhone());
+        this.viewBindings.studentformFragmentAddressInputEt.setText(this.student.getAddress());
+        this.viewBindings.studentformFragmentCheckbox.setChecked(this.student.isCheckBox());
     }
 
     private void displayDate() {
         String displayedDate = this.birthDateDay + "/" + this.birthDateMonth + "/" + this.birthDateYear;
-        this.viewBindings.studenteditFragmentBirthDateInputEt.setText(displayedDate);
+        this.viewBindings.studentformFragmentBirthDateInputEt.setText(displayedDate);
     }
 
     private void displayTime() {
         String displayedTime = this.birthDateHour + ":" + this.birthDateMinute;
-        this.viewBindings.studenteditFragmentBirthTimeInputEt.setText(displayedTime);
+        this.viewBindings.studentformFragmentBirthTimeInputEt.setText(displayedTime);
     }
 
     private void deleteStudent() {
@@ -141,15 +148,19 @@ public class StudentEditFragment extends Fragment {
 
     private void updateStudent() {
         Student newStudent = buildNewStudent();
-        Model.instance().setStudent(this.studentPosition, newStudent);
+        if (this.studentPosition == -1) {
+            Model.instance().addStudent(newStudent);
+        } else {
+            Model.instance().setStudent(this.studentPosition, newStudent);
+        }
     }
 
     private Student buildNewStudent() {
-        String name = this.viewBindings.studenteditFragmentNameInputEt.getText().toString();
-        String id = this.viewBindings.studenteditFragmentIdInputEt.getText().toString();
-        String phone = this.viewBindings.studenteditFragmentPhoneInputEt.getText().toString();
-        String address = this.viewBindings.studenteditFragmentAddressInputEt.getText().toString();
-        boolean checkbox = this.viewBindings.studenteditFragmentCheckbox.isChecked();
+        String name = this.viewBindings.studentformFragmentNameInputEt.getText().toString();
+        String id = this.viewBindings.studentformFragmentIdInputEt.getText().toString();
+        String phone = this.viewBindings.studentformFragmentPhoneInputEt.getText().toString();
+        String address = this.viewBindings.studentformFragmentAddressInputEt.getText().toString();
+        boolean checkbox = this.viewBindings.studentformFragmentCheckbox.isChecked();
         return new Student(name, id, phone, address, "", checkbox,
                 this.birthDateYear, this.birthDateMonth, this.birthDateDay,
                 this.birthDateHour, this.birthDateMinute);

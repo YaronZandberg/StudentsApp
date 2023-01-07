@@ -14,8 +14,12 @@
             android:id="@+id/action_studentListFragment_to_studentDetailsFragment"
             app:destination="@id/studentDetailsFragment" />
         <action
-            android:id="@+id/action_studentListFragment_to_studentNewFragment2"
-            app:destination="@id/studentNewFragment" />
+            android:id="@+id/action_studentListFragment_to_studentFormFragment"
+            app:destination="@id/studentFormFragment" >
+            <argument
+                android:name="student_position"
+                android:defaultValue="-1" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/studentDetailsFragment"
@@ -26,21 +30,16 @@
             android:name="student_position"
             app:argType="integer" />
         <action
-            android:id="@+id/action_studentDetailsFragment_to_studentEditFragment"
-            app:destination="@id/studentEditFragment" />
+            android:id="@+id/action_studentDetailsFragment_to_studentFormFragment"
+            app:destination="@id/studentFormFragment" />
     </fragment>
     <fragment
-        android:id="@+id/studentEditFragment"
-        android:name="com.example.studentsapp.fragments.StudentEditFragment"
-        android:label="Edit Student"
-        tools:layout="@layout/fragment_student_edit">
+        android:id="@+id/studentFormFragment"
+        android:name="com.example.studentsapp.fragments.StudentFormFragment"
+        android:label="Student Form"
+        tools:layout="@layout/fragment_student_form">
         <argument
             android:name="student_position"
             app:argType="integer" />
     </fragment>
-    <fragment
-        android:id="@+id/studentNewFragment"
-        android:name="com.example.studentsapp.fragments.StudentNewFragment"
-        android:label="New Student"
-        tools:layout="@layout/fragment_student_new" />
 </navigation>
