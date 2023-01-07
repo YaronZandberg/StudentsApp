@@ -45,7 +45,7 @@ public class StudentFormActivity extends AppCompatActivity {
         }
 
         this.cancelButton.setOnClickListener(view -> finish());
-        this.saveButton.setOnClickListener(view -> {
+        /*this.saveButton.setOnClickListener(view -> {
             Student newStudent = new Student(this.nameEt.getText().toString(),
                     this.idEt.getText().toString(),
                     this.phoneEt.getText().toString(),
@@ -58,7 +58,7 @@ public class StudentFormActivity extends AppCompatActivity {
                 Model.instance().setStudent(studentIndex, newStudent);
             }
             finish();
-        });
+        });*/
     }
 
     public void displayStudentDetails(Student student){

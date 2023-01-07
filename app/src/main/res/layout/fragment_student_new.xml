@@ -103,8 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/studentnew_fragment_address_input_layout" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/studentnew_fragment_birthday_input_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/studentnew_fragment_birth_date_input_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -112,18 +111,19 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentnew_fragment_checkbox">
+        app:layout_constraintTop_toBottomOf="@+id/studentnew_fragment_checkbox"
+        app:startIconDrawable="@drawable/ic_baseline_edit_24"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/studentnew_fragment_birthday_input_et"
+            android:id="@+id/studentnew_fragment_birth_date_input_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Birthday" />
+            android:hint="Birth Date" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/studentnew_fragment_birthtime_input_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/studentnew_fragment_birth_time_input_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -131,13 +131,15 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentnew_fragment_birthday_input_layout">
+        app:layout_constraintTop_toBottomOf="@+id/studentnew_fragment_birth_date_input_layout"
+        app:startIconDrawable="@drawable/ic_baseline_edit_24"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/studentnew_fragment_birthtime_input_et"
+            android:id="@+id/studentnew_fragment_birth_time_input_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Birthtime" />
+            android:hint="Birth Time" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

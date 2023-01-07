@@ -9,8 +9,7 @@ public class Model {
 
     private Model() {
         for (int i = 0; i < this.STUDENTS_AMOUNT; i++) {
-            this.addStudent(new Student("name " + i, "" + i, "03-" + i,
-                    "street " + i, "", false));
+            this.addStudent(initializeStudent(i));
         }
     }
 
@@ -26,6 +25,24 @@ public class Model {
 
     public Student getStudentById(Integer id) {
         return data.get(id);
+    }
+
+    private Student initializeStudent(Integer index) {
+        String name = "name " + index;
+        String id = "" + index;
+        String phone = "03-" + index;
+        String address = "street " + index;
+        String imageUrl = "";
+        boolean checkbox = false;
+        Integer year = 2022;
+        Integer month = index % 12;
+        Integer day = index % 30;
+        Integer hour = index % 24;
+        Integer minute = index % 60;
+        if (minute < 10) {
+            minute *= 10;
+        }
+        return new Student(name, id, phone, address, imageUrl, checkbox, year, month, day, hour, minute);
     }
 
     public void addStudent(Student student) {

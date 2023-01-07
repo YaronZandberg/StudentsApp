@@ -25,6 +25,7 @@ import com.example.studentsapp.model.Student;
 public class StudentDetailsFragment extends Fragment {
     private FragmentStudentDetailsBinding viewBindings;
     private Integer studentPosition;
+    private Student student;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class StudentDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         this.viewBindings = FragmentStudentDetailsBinding.inflate(inflater, container, false);
+        this.student = Model.instance().getStudentById(this.studentPosition);
         displayStudentDetails();
         this.viewBindings.studentdetailsFragmentEditBtn.setOnClickListener(view -> {
             StudentDetailsFragmentDirections
@@ -65,11 +67,26 @@ public class StudentDetailsFragment extends Fragment {
     }
 
     private void displayStudentDetails() {
-        Student student = Model.instance().getStudentById(this.studentPosition);
         this.viewBindings.studentdetailsFragmentNameTvValue.setText(student.getName());
         this.viewBindings.studentdetailsFragmentIdTvValue.setText(student.getId());
         this.viewBindings.studentdetailsFragmentPhoneTvValue.setText(student.getPhone());
         this.viewBindings.studentdetailsFragmentAddressTvValue.setText(student.getAddress());
         this.viewBindings.studentdetailsFragmentCheckbox.setChecked(student.isCheckBox());
+        this.viewBindings.studentdetailsFragmentCheckbox.setClickable(false);
+        displayDate();
+        this.viewBindings.studentdetailsFragmentBirthDateInputEt.setFocusable(false);
+        displayTime();
+        this.viewBindings.studentdetailsFragmentBirthTimeInputEt.setFocusable(false);
+    }
+
+    private void displayDate() {
+        String displayedDate = this.student.getBirthDateDay() + "/" +
+                this.student.getBirthDateMonth() + "/" + this.student.getBirthDateYear();
+        this.viewBindings.studentdetailsFragmentBirthDateInputEt.setText(displayedDate);
+    }
+
+    private void displayTime() {
+        String displayedTime = this.student.getBirthDateHour() + ":" + this.student.getBirthDateMinute();
+        this.viewBindings.studentdetailsFragmentBirthTimeInputEt.setText(displayedTime);
     }
 }
