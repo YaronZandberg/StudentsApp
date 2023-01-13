@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_addStudent"
+        android:icon="@drawable/ic_baseline_add_24"
+        android:title="Add Student"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_editStudent"
+        android:icon="@drawable/ic_baseline_edit_24"
+        android:title="Edit Student"
+        app:showAsAction="ifRoom" />
+</menu>
