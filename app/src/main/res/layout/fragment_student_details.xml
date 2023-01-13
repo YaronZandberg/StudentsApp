@@ -102,14 +102,6 @@
         android:layout_marginTop="4dp"
         android:text="CheckBox" />
 
-    <Button
-        android:id="@+id/studentdetails_fragment_edit_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/studentdetails_fragment_birth_date_input_layout"
         android:layout_width="0dp"

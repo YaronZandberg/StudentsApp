@@ -3,7 +3,6 @@ package com.example.studentsapp.fragments;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -32,8 +31,11 @@ public class StudentListFragment extends Fragment {
     private List<Student> data;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
+                             Bundle savedInstanceState) {
+        this.viewBindings = FragmentStudentListBinding.inflate(inflater, container, false);
+
         FragmentActivity parentActivity = getActivity();
         parentActivity.addMenuProvider(new MenuProvider() {
             @Override
@@ -43,21 +45,18 @@ public class StudentListFragment extends Fragment {
 
             @Override
             public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
-                /*StudentListFragmentDirections
-                        .ActionStudentListFragmentToStudentFormFragment action =
-                        StudentListFragmentDirections
-                        .actionStudentListFragmentToStudentFormFragment();
-                Navigation.findNavController(*//* Need a View *//*).navigate(action);*/
-                return true;
+                if (viewBindings != null) {
+                    StudentListFragmentDirections
+                            .ActionStudentListFragmentToStudentFormFragment action =
+                            StudentListFragmentDirections
+                                    .actionStudentListFragmentToStudentFormFragment();
+                    Navigation.findNavController(viewBindings.getRoot()).navigate(action);
+                    return true;
+                }
+                return false;
             }
-        }, this, Lifecycle.State.RESUMED);
-    }
+        }, getViewLifecycleOwner(), Lifecycle.State.RESUMED);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container,
-                             Bundle savedInstanceState) {
-        this.viewBindings = FragmentStudentListBinding.inflate(inflater, container, false);
         this.data = Model.instance().getAllStudents();
         RecyclerView studentsList = this.viewBindings.studentslistfragmentList;
         studentsList.setHasFixedSize(true);
@@ -71,14 +70,6 @@ public class StudentListFragment extends Fragment {
                     StudentListFragmentDirections
                             .actionStudentListFragmentToStudentDetailsFragment(position);
             Navigation.findNavController(viewBindings.studentslistfragmentList).navigate(action);
-        });
-
-        this.viewBindings.studentslistfragmentAddBtn.setOnClickListener(view -> {
-            StudentListFragmentDirections
-                    .ActionStudentListFragmentToStudentFormFragment action =
-                    StudentListFragmentDirections
-                            .actionStudentListFragmentToStudentFormFragment();
-            Navigation.findNavController(viewBindings.studentslistfragmentAddBtn).navigate(action);
         });
 
         return this.viewBindings.getRoot();

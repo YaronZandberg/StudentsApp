@@ -31,6 +31,13 @@ public class StudentDetailsFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.studentPosition = StudentDetailsFragmentArgs.fromBundle(getArguments()).getStudentPosition();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        this.viewBindings = FragmentStudentDetailsBinding.inflate(inflater, container, false);
+
         FragmentActivity parentActivity = getActivity();
         parentActivity.addMenuProvider(new MenuProvider() {
             @Override
@@ -40,29 +47,17 @@ public class StudentDetailsFragment extends Fragment {
 
             @Override
             public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
-                /*StudentDetailsFragmentDirections
+                StudentDetailsFragmentDirections
                         .ActionStudentDetailsFragmentToStudentFormFragment action =
                         StudentDetailsFragmentDirections
                         .actionStudentDetailsFragmentToStudentFormFragment(studentPosition);
-                Navigation.findNavController(*//* Need a View *//*).navigate(action);*/
+                Navigation.findNavController(viewBindings.getRoot()).navigate(action);
                 return true;
             }
-        }, this, Lifecycle.State.RESUMED);
-    }
+        }, getViewLifecycleOwner(), Lifecycle.State.RESUMED);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        this.viewBindings = FragmentStudentDetailsBinding.inflate(inflater, container, false);
         this.student = Model.instance().getStudentById(this.studentPosition);
         displayStudentDetails();
-        this.viewBindings.studentdetailsFragmentEditBtn.setOnClickListener(view -> {
-            StudentDetailsFragmentDirections
-                    .ActionStudentDetailsFragmentToStudentFormFragment action =
-                    StudentDetailsFragmentDirections
-                            .actionStudentDetailsFragmentToStudentFormFragment(this.studentPosition);
-            Navigation.findNavController(view).navigate(action);
-        });
         return this.viewBindings.getRoot();
     }
 
